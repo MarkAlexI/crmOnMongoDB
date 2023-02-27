@@ -1,38 +1,19 @@
 {
-
   "name": "crmOnMongoDB",
-
   "version": "1.0.0",
-
   "description": "Customer relationship management, based on Node.js and MongoDB.",
-
   "main": "index.js",
-
   "scripts": {
-
     "test": "echo \"Error: no test specified\" && exit 1"
-
   },
-
   "keywords": [
-
     "node.js",
-
     "MongoDB"
-
   ],
-
   "author": "MarkAlexI",
-
   "license": "MIT",
-
   "dependencies": {
-
     "@types/node": "^18.0.6",
-
     "node-fetch": "^3.2.6"
-
   }
-
 }
-
