@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="./assets/create.css">
+</head>
+<body>
+<div class="content">
+  <h2>Customer details</h2>
+  <div class="form">
+    <form action="/create" method="POST">
+      <label for="name" >Customer name *</label><br>
+      <input type="text" id="name" name="name" class="textInput" placeholder="John Smith" required>
+      <br>
+      <label for="address" >Customer address *</label><br>
+      <input type="text" name="address" class="textInput" placeholder="42 Wallaby Way, Sydney" required>
+      <br>
+      <label for="telephone" >Customer telephone *</label><br>
+      <input type="text" name="telephone" class="textInput" placeholder="+275554202" required>
+      <br>
+      <label for="note" >Customer note</label><br>
+      <input type="text" name="note" class="textInput" placeholder="Needs a new pair of shoes">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+</body>
+</html>

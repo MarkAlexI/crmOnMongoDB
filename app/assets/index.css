@@ -1,0 +1,13 @@
+body {
+  background-color: peachpuff;
+  font-size: 34px;
+}
+
+.form {
+  margin: 0 auto;
+  padding: 16px;
+}
+
+input["text"] {
+  color: green;
+}
