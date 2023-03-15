@@ -4,10 +4,25 @@ body {
 }
 
 .form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
   padding: 16px;
 }
 
-input["text"] {
-  color: green;
+input {
+  border: 2px solid blue;
+  border-radius: .5rem;
+  padding: .45rem;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  background-color: whitesmoke;
+  color: teal;
+  transition: all easy .6s;
+}
+
+input:hover {
+  background-color: teal;
+  color: whitesmoke;
 }
