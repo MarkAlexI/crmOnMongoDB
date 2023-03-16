@@ -20,7 +20,11 @@
   </div>
 
   <div class="form">
-    <form action="/records" method="GET">
+    <form
+      action="/records"
+      method="GET"
+      onsubmit="function(e) { e.preventDefault(); }"
+    >
       <input type="submit" value="Get all records">
     </form>
   </div>

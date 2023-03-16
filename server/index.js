@@ -43,13 +43,14 @@ app.get('/create/assets/create.css', function (req, res) {
   res.sendFile('/app/assets/create.css', {root:'.'});
 });
 
-app.get('/records', function (req, res) {
-  res.send('Check');
+app.get('/records', async function (req, res) {
+  const result = await getRecords();
+  res.send(result);
 });
 
 app.set('port', process.env.PORT || 5000);
 http.listen(app.get('port'), function() {
-    console.log('listening on port', app.get('port'));
+  console.log('listening on port', app.get('port'));
 });
 
 app.post('/create', async function (req, res, next) {
@@ -58,3 +59,14 @@ app.post('/create', async function (req, res, next) {
   console.log(JSON.stringify(result.insertedId));
   res.redirect('/');
 });
+
+async function getRecords() {
+  try {
+    const result = await db.collection("customers").find().toArray();
+    return result;
+  } catch(err) {
+    console.log(err);
+  } finally {
+    console.log(Date.now());
+  }
+}
