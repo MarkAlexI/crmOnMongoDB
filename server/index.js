@@ -24,8 +24,10 @@ async function getDb() {
 
 getDb();
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set("view engine", "hbs");
+app.set("views", "./app/views");
 
 app.get('/', function (req, res) {
   res.sendFile('/app/index.html', {root:'.'});
@@ -39,13 +41,12 @@ app.get('/create', function (req, res) {
   res.sendFile('/app/create.html', {root:'.'});
 });
 
-app.get('/create/assets/create.css', function (req, res) {
-  res.sendFile('/app/assets/create.css', {root:'.'});
-});
-
 app.get('/records', async function (req, res) {
   const result = await getRecords();
-  res.send(result);
+  res.render("records.hbs", {
+    recordsVisible: result?.length > 0,
+    records: result
+  });
 });
 
 app.set('port', process.env.PORT || 5000);

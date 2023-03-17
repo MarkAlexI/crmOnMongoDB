@@ -3,6 +3,10 @@ body {
   font-size: 34px;
 }
 
+.content {
+  padding: .5rem 1rem;
+}
+
 .form {
   display: flex;
   justify-content: center;
