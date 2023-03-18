@@ -28,6 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "hbs");
 app.set("views", "./app/views");
+app.disable("x-powered-by");
 
 app.get('/', function (req, res) {
   res.sendFile('/app/index.html', {root:'.'});
