@@ -55,16 +55,25 @@ http.listen(app.get('port'), function() {
   console.log('listening on port', app.get('port'));
 });
 
-app.post('/create', async function (req, res, next) {
+app.post('/create', async function (req, res) {
   let customer = { name: req.body.name, address: req.body.address, telephone: req.body.telephone, note: req.body.note };
   const result = await db.collection("customers").insertOne(customer);
   console.log(JSON.stringify(result.insertedId));
   res.redirect('/');
 });
 
+app.delete('/records/:id', (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  res.redirect(`/`);
+});
+
 async function getRecords() {
   try {
-    const result = await db.collection("customers").find().toArray();
+    const result = await db.collection("customers")
+      .find({})
+      .limit(100)
+      .toArray();
     return result;
   } catch(err) {
     console.log(err);

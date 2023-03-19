@@ -19,6 +19,12 @@
             <p class="record__field">Address: {{address}}</p>
             <p class="record__field">Telephone: {{telephone}}</p>
             <p class="record__field">Note: {{note}}</p>
+            <p class="record__field">id: {{_id}}</p>
+            <button
+              onclick="fetch('/records/{{_id}}', { method: 'DELETE' });"
+            >
+              Delete from database
+            </button>
           </div>
         {{/each}}
       </div>
