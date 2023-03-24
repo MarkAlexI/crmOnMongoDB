@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update</title>
+  <link rel="stylesheet" href="../assets/index.css">
+</head>
+<body>
+<div class="content">
+  <p>{{message}}</p>
+  <h2>Customer details</h2>
+  <div class="form">
+    <form action="/update" method="POST">
+      <input type="hidden" id="oldname" name="oldname" value="{{oldname}}">
+      <input type="hidden" id="oldaddress" name="oldaddress" value="{{oldaddress}}">
+      <input type="hidden" id="oldtelephone" name="oldtelephone" value="{{oldtelephone}}">
+      <input type="hidden" id="oldnote" name="oldnote" value="{{oldnote}}">
+      <label for="name">Customer name:</label>
+      <br />
+      <input type="text" placeholder="John Smith" name="name" value="{{name}}">
+      <br />
+      <label for="address">Customer address:</label>
+      <br />
+      <input type="text" placeholder="42 Wallaby Way, Sydney" name="address" value="{{address}}">
+      <br />
+      <label for="telephone">Customer telephone:</label>
+      <br />
+      <input type="text" placeholder="+123321" name="telephone" value="{{telephone}}">
+      <br />
+      <label for="note">Customer note:</label>
+      <br />
+      <input type="text" placeholder="Need a car" name="note" value="{{note}}">
+      <br />
+      <button type="submit" formaction="/update">Update</button>
+      <button type="submit" formaction="/delete">Delete</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
