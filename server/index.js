@@ -56,26 +56,20 @@ http.listen(app.get('port'), function() {
 });
 
 app.post('/create', async function (req, res) {
-  let customer = { name: req.body.name, address: req.body.address, telephone: req.body.telephone, note: req.body.note };
+  let customer = {
+    name: req.body.name,
+    address: req.body.address,
+    telephone: req.body.telephone,
+    note: req.body.note
+  };
+  
   const result = await db.collection("customers").insertOne(customer);
   console.log(JSON.stringify(result.insertedId));
   res.redirect('/');
 });
 
 app.delete('/records/:id', async (req, res) => {
- /* const id = req.params.id;
-  console.log(id);
-  res.redirect(`/`);*/
-  /*try {
-  const id = req.params.id;//new objectId(req.params.id);
-        const user = await db.collection("customers").findOne({_id: id});
-        if(user) res.send(user);
-        else res.sendStatus(404);
-  } catch(error) {
-    console.log(error);
-    res.sendStatus(500);
-}*/
-let collection = await db.collection("customers");
+  let collection = await db.collection("customers");
   let query = {_id: new ObjectId(req.params.id)};
   let result = await collection.findOne(query);
 
@@ -83,8 +77,9 @@ let collection = await db.collection("customers");
     console.log(`not`);
     res.send("Not found").status(404);
   } else {
-    console.log(JSON.stringify(result));
-    res.send(JSON.stringify(result)).status(200);
+    await collection.deleteOne(query);
+    console.log("Delete record");
+    res.send('Delete');
   }
 });
 
@@ -94,8 +89,11 @@ app.get('/get', function (req, res) {
 
 app.get('/get-client', async function (req, res) {
   try {
-    /*db.collection("customers").findOne({name: req.query.name}, function(err, result) {
-      if (err) throw err;
+    let collection = await db.collection("customers");
+    let query = {name: req.query.name};
+    const result = await collection.findOne(query);
+    if (result) {
+      console.log(result);
       res.render("update.hbs", {
         oldname: result.name,
         oldaddress: result.address,
@@ -106,11 +104,9 @@ app.get('/get-client', async function (req, res) {
         telephone: result.telephone,
         note: result.note
       });
-    });*/
-    const id = new ObjectId(req.params.id);
-        const user = await db.collection("customers").findOne({_id: id});
-        if(user) (console.log(user), res.send(user));
-        else res.sendStatus(404);
+    } else {
+      res.send("Not found").status(404);
+    }
   } catch(error) {
     console.log(error);
     res.sendStatus(500);
