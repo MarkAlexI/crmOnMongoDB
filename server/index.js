@@ -113,6 +113,34 @@ app.get('/get-client', async function (req, res) {
   }
 });
 
+app.post('/update', async function (req, res) {
+  try {
+    let collection = await db.collection("customers");
+    let query = { name: req.body.oldname, address: req.body.oldaddress, telephone: req.body.oldtelephone, note: req.body.oldnote };
+    let newValues = { $set: {name: req.body.name, address: req.body.address, telephone: req.body.telephone, note: req.body.note } };
+    const result = await collection.updateOne(query, newValues);
+    if (result) {
+      console.log(result);
+      res.render("update.hbs", {
+        message: 'Customer updated!',
+        oldname: req.body.name,
+        oldaddress: req.body.address,
+        oldtelephone: req.body.telephone,
+        oldnote: req.body.note,
+        name: req.body.name,
+        address: req.body.address,
+        telephone: req.body.telephone,
+        note: req.body.note
+      });
+    } else {
+      res.send("Not updated");
+    }
+  } catch(error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
 async function getRecords() {
   try {
     const result = await db.collection("customers")
