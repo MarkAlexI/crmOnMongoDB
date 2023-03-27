@@ -116,8 +116,20 @@ app.get('/get-client', async function (req, res) {
 app.post('/update', async function (req, res) {
   try {
     let collection = await db.collection("customers");
-    let query = { name: req.body.oldname, address: req.body.oldaddress, telephone: req.body.oldtelephone, note: req.body.oldnote };
-    let newValues = { $set: {name: req.body.name, address: req.body.address, telephone: req.body.telephone, note: req.body.note } };
+    let query = {
+      name: req.body.oldname,
+      address: req.body.oldaddress,
+      telephone: req.body.oldtelephone,
+      note: req.body.oldnote
+    };
+    let newValues = {
+      $set: {
+        name: req.body.name,
+        address: req.body.address,
+        telephone: req.body.telephone,
+        note: req.body.note
+      }
+    };
     const result = await collection.updateOne(query, newValues);
     if (result) {
       console.log(result);
@@ -138,6 +150,23 @@ app.post('/update', async function (req, res) {
   } catch(error) {
     console.log(error);
     res.sendStatus(500);
+  }
+});
+
+app.post('/delete', async function(req, res) {
+  try {
+    let collection = await db.collection("customers");
+    let query = {
+      name: req.body.name,
+      address: req.body.address ? req.body.address : null
+    };
+    const result = await collection.deleteOne(query);
+    console.log(result);
+    console.log("1 document deleted");
+    res.send(`Customer ${req.body.name} deleted`).status(200);
+  } catch(error) {
+    console.log(error);
+    res.send("Failed");
   }
 });
 
