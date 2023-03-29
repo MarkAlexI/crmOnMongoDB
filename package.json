@@ -1,6 +1,6 @@
 {
   "name": "crmOnMongoDB",
-  "version": "1.9.2",
+  "version": "1.10.2",
   "description": "Customer relationship management, based on Node.js and MongoDB.",
   "main": "./server/index.js",
   "scripts": {

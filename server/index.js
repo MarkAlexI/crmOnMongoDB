@@ -75,11 +75,15 @@ app.delete('/records/:id', async (req, res) => {
 
   if (!result) {
     console.log(`not`);
-    res.send("Not found").status(404);
+    res.status(404).render("answer.hbs", {
+      message: "Not found"
+    });
   } else {
     await collection.deleteOne(query);
     console.log("Delete record");
-    res.send('Delete');
+    res.render("answer.hbs", {
+      message: "Delete"
+    });
   }
 });
 
@@ -105,7 +109,9 @@ app.get('/get-client', async function (req, res) {
         note: result.note
       });
     } else {
-      res.send("Not found").status(404);
+      res.status(404).render("answer.hbs", {
+        message: "Not found"
+      });
     }
   } catch(error) {
     console.log(error);
@@ -145,7 +151,9 @@ app.post('/update', async function (req, res) {
         note: req.body.note
       });
     } else {
-      res.send("Not updated");
+      res.render("answer.hbs", {
+        message: "Not updated"
+      });
     }
   } catch(error) {
     console.log(error);
@@ -166,7 +174,9 @@ app.post('/delete', async function(req, res) {
     res.send(`Customer ${req.body.name} deleted`).status(200);
   } catch(error) {
     console.log(error);
-    res.send("Failed");
+    res.render("answer.hbs", {
+      message: "Deleting failed"
+    });
   }
 });
 
