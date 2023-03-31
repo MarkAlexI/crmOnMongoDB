@@ -10,6 +10,11 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+h1,
+h3 {
+  text-align: center;
+}
+
 .content {
   font-family: 'Roboto', sans-serif;
   padding: .5rem 1rem;
@@ -27,6 +32,7 @@ input {
   border: 2px solid blue;
   border-radius: .5rem;
   padding: .45rem;
+  margin-bottom: .6rem;
   font-size: 1.25rem;
   text-transform: uppercase;
   background-color: whitesmoke;
@@ -47,6 +53,28 @@ input[type=reset]:hover {
   transform: scale(1.1);
   background-color: teal;
   color: whitesmoke;
+}
+
+button {
+  margin-left: .6rem;
+  margin-bottom: .5rem;
+  padding: .5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: orange;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 .625rem #ab6400;
+}
+
+button:hover {
+  background-color: gold;
+}
+
+button:active {
+  background-color: gold;
+  box-shadow: 0 .31rem #ab6400;
+  transform: translateY(.31rem);
 }
 
 .record__list {
@@ -78,7 +106,7 @@ input[type=reset]:hover {
 }
 
 .record__field {
-  font-size: .9rem;
+  font-size: 1.1rem;
   text-align: left;
   width: 90%;
   margin: 1.25rem auto;
