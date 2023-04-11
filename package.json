@@ -1,15 +1,18 @@
 {
   "name": "crmOnMongoDB",
-  "version": "1.11.2",
-  "description": "Customer relationship management, based on Node.js and MongoDB.",
+  "version": "1.12.2",
+  "description": "Customer relationship management, based on Node.js, express.js and MongoDB.",
   "main": "./server/index.js",
   "scripts": {
+    "install-dep": "npm i",
     "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "node.js",
-    "MongoDB"
+    "express.js",
+    "MongoDB",
+    "CRUD"
   ],
   "author": "MarkAlexI",
   "license": "MIT",
