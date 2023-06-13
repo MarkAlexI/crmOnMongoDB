@@ -1,6 +1,6 @@
 {
   "name": "crmOnMongoDB",
-  "version": "1.12.2",
+  "version": "1.12.3",
   "description": "Customer relationship management, based on Node.js, express.js and MongoDB.",
   "main": "./server/index.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "node.js",
     "express.js",
     "MongoDB",
-    "CRUD"
+    "CRUD",
+    "CRM"
   ],
   "author": "MarkAlexI",
   "license": "MIT",

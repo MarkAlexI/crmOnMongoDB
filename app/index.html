@@ -32,7 +32,7 @@
     <form
       action="/records"
       method="GET"
-      onsubmit="function(e) { e.preventDefault(); }"
+      onsubmit="function(e) { e.preventDefault(); return false; }"
     >
       <input type="submit" value="Get all records">
     </form>
